@@ -1,0 +1,38 @@
+.cardList{
+  width: 60%;
+  height: 30%;
+
+
+}
+.cardListItem{
+
+  flex: 0 1 calc(30% -20px);
+}
+.content {
+  height:30%;
+  padding: 10px;
+}
+p{
+
+  text-overflow: ellipsis;
+}
+
+.content > mat-card {
+  width: 300px;
+
+
+}
+.mat-card{
+  display:flex;
+
+  flex-direction: column;
+}
+
+.mat-card-header {
+  flex-shrink: 0;
+}
+
+.mat-card-content{
+  flex-grow: 1;
+  overflow: auto;
+}

@@ -1,1 +1,22 @@
-<p>insurances works!</p>
+<mat-tab-group>
+  <mat-tab  fxFlex="25%"  *ngFor= "let cat of categories" [label]="cat.label">
+    <div  class="content" fxLayout="row wrap" fxLayoutGap="10px">
+      <ng-container *ngFor="let insu of getInsurancesByCategorie(cat.key)">
+        <mat-card  class="mat mat-elevation-z4" >
+          <mat-card-header>
+            <mat-card-title>{{insu.title}}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image [src]="insu.urlImage">
+          <mat-card-content>
+            <p>
+              {{insu.description}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button  fxFlex mat-flat-button color="primary">Add Insurance</button>
+          </mat-card-actions>
+        </mat-card>
+      </ng-container>
+    </div>
+  </mat-tab>
+</mat-tab-group>

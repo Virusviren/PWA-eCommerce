@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {CategorieService} from '../../../commun/services/categorie.service';
+import {Subscriber, Subscription} from 'rxjs';
+import {InsurancesService} from '../../services/insurances.service';
+import {mergeMap, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-insurances',
@@ -7,9 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InsurancesComponent implements OnInit {
 
-  constructor() { }
+
+  categories: any[];
+  insurances: any[];
+  sub: Subscription;
+  constructor( private serviceCategorie: CategorieService, private serviceInsurance: InsurancesService) { }
 
   ngOnInit() {
+    this.sub = this.serviceCategorie.getAllCategories()
+      .pipe(
+        mergeMap(categories => this.serviceInsurance.getAllInsurances().pipe(
+          map(insurances => [categories, insurances])
+        ))).subscribe(([categories, insurances]) => {
+        this.categories = categories;
+        this.insurances = insurances;
+        console.log(categories);
+        console.log(insurances);
+      });
+  }
+  getInsurancesByCategorie(key) {
+    return this.insurances.filter(insurance => insurance.categorie === key);
   }
 
 }
