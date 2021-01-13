@@ -15,6 +15,7 @@ import {AppModuleAuthentication} from './modules/authentication/app.module';
 import {AppModuleCommun} from './modules/commun/app.module';
 import {AppModuleInsurances} from './modules/insurances/app.module';
 import {AppModuleMenu} from './modules/menu/app.module';
+import {AppModuleOrder} from './modules/orders/app.module';
 
 
 
@@ -36,7 +37,8 @@ import {AppModuleMenu} from './modules/menu/app.module';
     AppModuleAuthentication,
     AppModuleCommun,
     AppModuleInsurances,
-    AppModuleMenu
+    AppModuleMenu,
+    AppModuleOrder
 
   ],
   providers: [],
